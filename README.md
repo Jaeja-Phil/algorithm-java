@@ -11,3 +11,7 @@
 ## leetcode
 
 `LeetCode`에서 풀어본 문제들을 모아놓은 저장소입니다.
+
+## educative.grokking_coding_interview_patterns_in_java
+
+`educative.io`의 `Grokking the Coding Interview: Patterns for Coding Questions` 강의를 통해 풀어본 문제들을 모아놓은 저장소입니다.
