@@ -18,6 +18,7 @@ package educative.grokking_coding_interview_patterns_in_java.sliding_window;
 public class $07_BestTimeToBuyAndSellStock {
     public static void main(String[] args) {
         System.out.println(solution(new int[] {7, 1, 5, 3, 6, 4})); // 5
+        System.out.println(slidingWindowSolution(new int[] {7, 1, 5, 3, 6, 4})); // 5
     }
 
     public static int solution(int[] prices) {
@@ -33,6 +34,35 @@ public class $07_BestTimeToBuyAndSellStock {
             maxProfit = Math.max(maxProfit, currentPrice - minPrice);
         }
         // return maxProfit
+        return maxProfit;
+    }
+
+    public static int slidingWindowSolution(int[] prices) {
+        if (prices.length <= 1) {
+            return 0;
+        }
+
+        // set up buy and sell pointers (window left and right)
+        int buy = 0, sell = 1;
+        // initialize maxProfit to 0
+        int maxProfit = 0;
+        // iterate through the prices array
+        while (sell < prices.length) {
+            // get current profit with buy and sell pointers
+            int currentProfit = prices[sell] - prices[buy];
+            // replace maxProfit if currentProfit is greater than maxProfit
+            if (currentProfit > maxProfit) {
+                maxProfit = currentProfit;
+            }
+            // if price at sell pointer is lower than price at buy,
+            // new lowest price has been found
+            if (prices[sell] < prices[buy]) {
+                buy = sell;
+            }
+            // increment sell pointer to the next day
+            sell++;
+        }
+
         return maxProfit;
     }
 }
